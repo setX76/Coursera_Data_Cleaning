@@ -1,7 +1,7 @@
 #Task 1 - Merge datasets
 
 
-setwd("/Users/andre/OneDrive/Transfer/Coursera/Tasks/Getting and Cleaning Data/Course_Project/Data Cleaning/data")
+setwd("/Users/andre/OneDrive/Transfer/Coursera/Tasks/Getting and Cleaning Data/Course_Project/Coursera_Data_Cleaning/data")
 
 #load activity labels
 activity_lab <- read.table("activity_labels.txt")
@@ -12,7 +12,7 @@ features <- read.table("features.txt")
 features <- as.vector(features$V2)
 
 #Train dataset
-setwd("/Users/andre/OneDrive/Transfer/Coursera/Tasks/Getting and Cleaning Data/Course_Project/Data Cleaning/data/train")
+setwd("/Users/andre/OneDrive/Transfer/Coursera/Tasks/Getting and Cleaning Data/Course_Project/Coursera_Data_Cleaning/data/train")
 
 
 #load subject train
@@ -49,7 +49,7 @@ rm(subject_train,X_train,y_train)
 
 #Prepare test dataset
 #Test dataset
-setwd("/Users/andre/OneDrive/Transfer/Coursera/Tasks/Getting and Cleaning Data/Course_Project/Data Cleaning/data/test")
+setwd("/Users/andre/OneDrive/Transfer/Coursera/Tasks/Getting and Cleaning Data/Course_Project/Coursera_Data_Cleaning/data/test")
 
 
 #load subject test
@@ -111,44 +111,46 @@ fulldata <- fulldata[,c(1,2,meanstd)]
 #Change Activity to Factor
 fulldata$Activity <- factor(fulldata$Activity, labels = activity_lab)
 
+write.csv(fulldata, "fulldata.csv", row.names = FALSE)
+fulldata <- read.csv("fulldata.csv", header = 1)
 
 #Task 4
 #Appropriately labels the data set with descriptive variable names.
-colnames(fulldata) <- gsub("tBodyAcc-mean()-","Time Body Acceleration_mean_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyAcc-std()-","Time Body Acceleration_std_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("tGravityAcc-mean()-","Time Gravity Acceleration_mean_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("tGravityAcc-std()-","Time Gravity Acceleration_std_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyAccJerk-mean()-","Time Body Acceleration Jerk Signals_mean_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyAccJerk-std()-","Time Body Acceleration Jerk Signals_std_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyGyro-mean()-","Time Body Gyrometer_mean_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyGyro-std()-","Time Body Gyrometer_std_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyGyroJerk-mean()-","Time Body Gyrometer Jerk Signals_mean_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyGyroJerk-std()-","Time Body Gyrometer Jerk Signals_std_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyAccMag-mean()","Time Body Acceleration Magnet_mean", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyAccMag-std()","Time Body Acceleration Magnet_std", colnames(fulldata))
-colnames(fulldata) <- gsub("tGravityAccMag-mean()","Time Gravity Acceleration Magnet_mean", colnames(fulldata))
-colnames(fulldata) <- gsub("tGravityAccMag-std()","Time Gravity Acceleration Magnet_std", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyAccJerkMag-mean()","Time Body Acceleration Jerk Signals Magnet_mean", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyAccJerkMag-std()","Time Body Acceleration Jerk Signals Magnet_std", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyGyroMag-mean()","Time Body Gyrometer Magnet_mean", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyGyroMag-std()","Time Body Gyrometer Magnet_std", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyGyroJerkMag-mean()","Time Body Gyrometer Jerk Signals Magnet_mean", colnames(fulldata))
-colnames(fulldata) <- gsub("tBodyGyroJerkMag-std()","Time Body Gyrometer Jerk Signals Magnet_std", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyAcc.mean()...","Time Body Acceleration_mean_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyAcc.std()...","Time Body Acceleration_std_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("tGravityAcc.mean()...","Time Gravity Acceleration_mean_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("tGravityAcc.std()...","Time Gravity Acceleration_std_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyAccJerk.mean()...","Time Body Acceleration Jerk Signals_mean_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyAccJerk.std()...","Time Body Acceleration Jerk Signals_std_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyGyro.mean()...","Time Body Gyrometer_mean_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyGyro.std()...","Time Body Gyrometer_std_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyGyroJerk.mean()...","Time Body Gyrometer Jerk Signals_mean_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyGyroJerk.std()...","Time Body Gyrometer Jerk Signals_std_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyAccMag.mean()..","Time Body Acceleration Magnet_mean", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyAccMag.std()..","Time Body Acceleration Magnet_std", colnames(fulldata))
+colnames(fulldata) <- gsub("tGravityAccMag.mean()..","Time Gravity Acceleration Magnet_mean", colnames(fulldata))
+colnames(fulldata) <- gsub("tGravityAccMag.std()..","Time Gravity Acceleration Magnet_std", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyAccJerkMag.mean()..","Time Body Acceleration Jerk Signals Magnet_mean", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyAccJerkMag.std()..","Time Body Acceleration Jerk Signals Magnet_std", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyGyroMag.mean()..","Time Body Gyrometer Magnet_mean", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyGyroMag.std()..","Time Body Gyrometer Magnet_std", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyGyroJerkMag.mean()..","Time Body Gyrometer Jerk Signals Magnet_mean", colnames(fulldata))
+colnames(fulldata) <- gsub("tBodyGyroJerkMag.std()..","Time Body Gyrometer Jerk Signals Magnet_std", colnames(fulldata))
 
-colnames(fulldata) <- gsub("fBodyAcc-mean()-","Frequency Body Acceleration_mean_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("fBodyAcc-std()-","Frequency Body Acceleration_std_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("fBodyAccJerk-mean()-","Frequency Body Acceleration Jerk Signals_mean_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("fBodyAccJerk-std()-","Frequency Body Acceleration Jerk Signals_std_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("fBodyGyro-mean()-","Frequency Body Gyrometer_mean_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("fBodyGyro-std()-","Frequency Body Gyrometer_std_Axis-", colnames(fulldata))
-colnames(fulldata) <- gsub("fBodyAccMag-mean()","Frequency Body Acceleration Magnet_mean", colnames(fulldata))
-colnames(fulldata) <- gsub("fBodyAccMag-std()","Frequency Body Acceleration Magnet_std", colnames(fulldata))
-colnames(fulldata) <- gsub("fBodyBodyAccJerkMag-mean()","Frequency Body Acceleration Jerk Signals Magnet_mean", colnames(fulldata))
-colnames(fulldata) <- gsub("fBodyBodyAccJerkMag-std()","Frequency Body Acceleration Jerk Signals Magnet_std", colnames(fulldata))
-colnames(fulldata) <- gsub("fBodyBodyGyroMag-mean()","Frequency Body Gyrometer Magnet_mean", colnames(fulldata))
-colnames(fulldata) <- gsub("fBodyBodyGyroMag-std()","Frequency Body Gyrometer Magnet_std", colnames(fulldata))
-colnames(fulldata) <- gsub("fBodyBodyGyroJerkMag-mean()","Frequency Body Gyrometer Jerk Signals Magnet_mean", colnames(fulldata))
-colnames(fulldata) <- gsub("fBodyBodyGyroJerkMag-std()","Frequency Body Gyrometer Jerk Signals Magnet_std", colnames(fulldata))
+colnames(fulldata) <- gsub("fBodyAcc.mean()...","Frequency Body Acceleration_mean_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("fBodyAcc.std()...","Frequency Body Acceleration_std_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("fBodyAccJerk.mean()...","Frequency Body Acceleration Jerk Signals_mean_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("fBodyAccJerk.std()...","Frequency Body Acceleration Jerk Signals_std_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("fBodyGyro.mean()...","Frequency Body Gyrometer_mean_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("fBodyGyro.std()...","Frequency Body Gyrometer_std_Axis-", colnames(fulldata))
+colnames(fulldata) <- gsub("fBodyAccMag.mean()..","Frequency Body Acceleration Magnet_mean", colnames(fulldata))
+colnames(fulldata) <- gsub("fBodyAccMag.std()..","Frequency Body Acceleration Magnet_std", colnames(fulldata))
+colnames(fulldata) <- gsub("fBodyBodyAccJerkMag.mean()..","Frequency Body Acceleration Jerk Signals Magnet_mean", colnames(fulldata))
+colnames(fulldata) <- gsub("fBodyBodyAccJerkMag.std()..","Frequency Body Acceleration Jerk Signals Magnet_std", colnames(fulldata))
+colnames(fulldata) <- gsub("fBodyBodyGyroMag.mean()..","Frequency Body Gyrometer Magnet_mean", colnames(fulldata))
+colnames(fulldata) <- gsub("fBodyBodyGyroMag.std()..","Frequency Body Gyrometer Magnet_std", colnames(fulldata))
+colnames(fulldata) <- gsub("fBodyBodyGyroJerkMag.mean()..","Frequency Body Gyrometer Jerk Signals Magnet_mean", colnames(fulldata))
+colnames(fulldata) <- gsub("fBodyBodyGyroJerkMag.std()..","Frequency Body Gyrometer Jerk Signals Magnet_std", colnames(fulldata))
 
 #Task 5
 #From the data set in step 4, creates a second, independent tidy data set with 
